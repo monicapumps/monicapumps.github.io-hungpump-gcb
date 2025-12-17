@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GCB Series: BLDC Grinder Pump Interactive Catalog</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        /* Custom Chart Container Styles */
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 400px;
+            }
+        }
+        
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Custom selection color: Yellow/Black contrast */
+        ::selection {
+            background-color: #eab308; /* yellow-500 */
+            color: black;
+        }
+        
+        .loading-spinner {
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            border-radius: 50%;
+            border-top: 4px solid #16a34a; /* green-600 */
+            width: 24px;
+            height: 24px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+    <!-- Chosen Palette: Industrial Eco (Black, Green, Yellow) -->
+</head>
+<body class="bg-white text-gray-900 font-sans leading-relaxed">
+
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 bg-black/95 backdrop-blur-md shadow-md border-b border-gray-800 text-white">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="text-xl font-bold text-yellow-500 flex items-center gap-2 tracking-wider">
+                <span>🏭</span> HUNG PUMP
+            </div>
+            <div class="hidden md:flex space-x-6 text-sm font-medium text-gray-300">
+                <a href="#overview" class="hover:text-yellow-400 transition">Overview</a>
+                <a href="#features" class="hover:text-yellow-400 transition">Features</a>
+                <a href="#performance" class="hover:text-yellow-400 transition">Performance</a>
+                <a href="#savings" class="hover:text-yellow-400 transition">ROI & Savings</a>
+                <a href="#specs" class="hover:text-yellow-400 transition">Specs</a>
+                <a href="#support" class="hover:text-yellow-400 transition">Support</a>
+            </div>
+            <button onclick="document.getElementById('contact').scrollIntoView()" class="bg-green-600 hover:bg-green-500 text-white px-5 py-2 rounded-none font-bold text-sm transition shadow-md uppercase tracking-wide border-b-4 border-green-800 active:border-b-0 active:translate-y-1">
+                Get Quote
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="overview" class="relative pt-16 pb-20 px-4 bg-white">
+        <div class="container mx-auto max-w-5xl text-center">
+            <div class="inline-block bg-yellow-400 text-black px-4 py-1 font-bold tracking-widest text-xs mb-6 uppercase shadow-sm transform -skew-x-12">
+                NEW GCB SERIES
+            </div>
+            <h1 class="text-4xl md:text-6xl font-black text-black mb-6 tracking-tight uppercase">
+                The Silent Revolution in <br/> <span class="text-green-600">Wastewater Management</span>
+            </h1>
+            <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto mb-8 font-medium">
+                Introducing the BLDC Submersible Grinder Pump. Engineered for unmatched reliability with a constant torque motor, near-silent operation, and a durable stainless steel cutter.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <button onclick="document.getElementById('performance').scrollIntoView()" class="bg-black text-white px-8 py-3 font-bold hover:bg-gray-800 transition shadow-lg border-2 border-black">
+                    View Performance Curves
+                </button>
+                <button onclick="document.getElementById('features').scrollIntoView()" class="bg-transparent text-black border-2 border-black px-8 py-3 font-bold hover:bg-yellow-400 hover:border-yellow-400 transition">
+                    Explore Features
+                </button>
+            </div>
+
+            <!-- KEY ADVANTAGES (English) -->
+            <div class="mt-16 max-w-5xl mx-auto">
+                <h3 class="text-xl font-bold text-black mb-8 border-b-4 border-yellow-400 pb-2 inline-block">
+                    KEY PRODUCT ADVANTAGES
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
+                    <div class="flex items-start gap-3 p-5 bg-gray-50 border-l-4 border-green-500 shadow-sm hover:shadow-md transition">
+                        <span class="text-green-600 font-bold mt-0.5 text-lg">✔</span>
+                        <p class="text-sm text-gray-800">
+                            <strong>High-Efficiency Anti-Clog Motor:</strong> Constant speed, constant torque, and high starting torque BLDC motor to completely prevent jamming.
+                        </p>
+                    </div>
+                    <div class="flex items-start gap-3 p-5 bg-gray-50 border-l-4 border-green-500 shadow-sm hover:shadow-md transition">
+                        <span class="text-green-600 font-bold mt-0.5 text-lg">✔</span>
+                        <p class="text-sm text-gray-800">
+                            <strong>Premium Grinder Cutter:</strong> SUS440C stainless steel cutter (HRC55~60), durable with powerful grinding capability.
+                        </p>
+                    </div>
+                    <div class="flex items-start gap-3 p-5 bg-gray-50 border-l-4 border-green-500 shadow-sm hover:shadow-md transition">
+                        <span class="text-green-600 font-bold mt-0.5 text-lg">✔</span>
+                        <p class="text-sm text-gray-800">
+                            <strong>Ultra-Silent & Energy Saving:</strong> BLDC technology ensures near-silent operation and superior energy efficiency, lowering OpEx.
+                        </p>
+                    </div>
+                    <div class="flex items-start gap-3 p-5 bg-gray-50 border-l-4 border-green-500 shadow-sm hover:shadow-md transition">
+                        <span class="text-green-600 font-bold mt-0.5 text-lg">✔</span>
+                        <p class="text-sm text-gray-800">
+                            <strong>Smart Anti-Jam Function:</strong> Equipped with Soft Start and Reverse Jog functions to automatically clear clogs and extend lifespan.
+                        </p>
+                    </div>
+                    <div class="flex items-start gap-3 p-5 bg-gray-50 border-l-4 border-green-500 shadow-sm hover:shadow-md transition">
+                        <span class="text-green-600 font-bold mt-0.5 text-lg">✔</span>
+                        <p class="text-sm text-gray-800">
+                            <strong>Compact Lightweight Design:</strong> Lightweight structure designed for easy installation in narrow pits or sumps.
+                        </p>
+                    </div>
+                    <div class="flex items-start gap-3 p-5 bg-gray-50 border-l-4 border-green-500 shadow-sm hover:shadow-md transition">
+                        <span class="text-green-600 font-bold mt-0.5 text-lg">✔</span>
+                        <p class="text-sm text-gray-800">
+                            <strong>High-Standard Sealing:</strong> Double mechanical seals and plug-in cable entry provide excellent water resistance.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- BLDC Core Image Callout -->
+            <div class="mt-16 mb-12 max-w-xl mx-auto p-1 bg-black rounded-lg shadow-xl">
+                <div class="bg-white p-4 rounded-md">
+                    <h3 class="text-lg font-black text-black mb-4 flex items-center justify-center gap-2 uppercase">
+                        <span class="text-2xl text-yellow-500">⚡</span> Core Technology: BLDC Motor
+                    </h3>
+                    <img src="https://www.hungpump.com/images/159436" 
+                         alt="BLDC Motor Core Technology Diagram"
+                         class="w-full h-auto object-contain"
+                         onerror="this.onerror=null;this.src='https://placehold.co/400x200/cccccc/333333?text=BLDC+Motor+Image+Load+Failed';"
+                    />
+                </div>
+            </div>
+
+            <!-- Product Overview Image -->
+            <img src="https://www.hungpump.com/images/329282/0/500" 
+                 alt="GCB Series Submersible Grinder Pump Overview"
+                 class="mt-12 w-full rounded-none shadow-2xl mx-auto max-w-4xl border-b-8 border-green-600 object-cover"
+                 onerror="this.onerror=null;this.src='https://placehold.co/800x450/cccccc/333333?text=Image+Load+Failed';"
+            />
+        </div>
+    </header>
+
+    <!-- Interactive Features Hub -->
+    <section id="features" class="py-16 px-4 bg-gray-100">
+        <div class="container mx-auto max-w-6xl">
+            <div class="mb-12 text-center max-w-3xl mx-auto">
+                <h2 class="text-3xl font-black text-black mb-4 uppercase">Engineered for Excellence</h2>
+                <p class="text-gray-600">
+                    The GCB Series integrates three core pillars of technology to solve common sewage disposal problems: jamming, noise, and high energy costs. Explore the engineering below.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                <!-- Tabs Navigation -->
+                <div class="lg:col-span-4 flex flex-col gap-3">
+                    <button onclick="switchTab('reliability')" id="tab-reliability" class="feature-tab active-tab text-left p-6 border-l-4 border-yellow-500 bg-white shadow-md transition-all duration-300 group">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-2xl">🛡️</span>
+                            <span class="text-green-600 font-bold group-hover:translate-x-1 transition">→</span>
+                        </div>
+                        <h3 class="font-bold text-lg text-black">Anti-Clog Reliability</h3>
+                        <p class="text-sm text-gray-500 mt-1">High torque & SUS440C Cutter</p>
+                    </button>
+                    
+                    <button onclick="switchTab('motor')" id="tab-motor" class="feature-tab text-left p-6 border-l-4 border-transparent bg-gray-200 hover:bg-white hover:border-yellow-400 transition-all duration-300 group">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-2xl">⚡</span>
+                            <span class="text-black opacity-0 group-hover:opacity-100 transition">→</span>
+                        </div>
+                        <h3 class="font-bold text-lg text-gray-700 group-hover:text-black">BLDC Motor Tech</h3>
+                        <p class="text-sm text-gray-500 mt-1">Silent & Energy Efficient</p>
+                    </button>
+
+                    <button onclick="switchTab('smart')" id="tab-smart" class="feature-tab text-left p-6 border-l-4 border-transparent bg-gray-200 hover:bg-white hover:border-yellow-400 transition-all duration-300 group">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-2xl">🧠</span>
+                            <span class="text-black opacity-0 group-hover:opacity-100 transition">→</span>
+                        </div>
+                        <h3 class="font-bold text-lg text-gray-700 group-hover:text-black">Smart Functions</h3>
+                        <p class="text-sm text-gray-500 mt-1">Reverse Jog & Soft Start</p>
+                    </button>
+                </div>
+
+                <!-- Tab Content Area -->
+                <div class="lg:col-span-8 bg-white p-8 border border-gray-200 shadow-lg relative overflow-hidden min-h-[400px] flex items-center">
+                    
+                    <!-- Content: Reliability -->
+                    <div id="content-reliability" class="feature-content w-full">
+                        <div class="flex flex-col md:flex-row gap-8 items-center">
+                            <div class="flex-1">
+                                <h3 class="text-2xl font-bold text-black mb-4 border-b-2 border-yellow-400 pb-2 inline-block">Unmatched Anti-Clog Design</h3>
+                                <ul class="space-y-4">
+                                    <li class="flex gap-3">
+                                        <span class="text-green-600 font-bold">✓</span>
+                                        <p class="text-gray-700"><strong>Constant Speed & Torque:</strong> Maintains consistent performance under variable loads, actively preventing jamming.</p>
+                                    </li>
+                                    <li class="flex gap-3">
+                                        <span class="text-green-600 font-bold">✓</span>
+                                        <p class="text-gray-700"><strong>SUS440C Cutter:</strong> Stainless steel hardened to HRC55–60. Exceptionally durable for grinding tough solids.</p>
+                                    </li>
+                                    <li class="flex gap-3">
+                                        <span class="text-green-600 font-bold">✓</span>
+                                        <p class="text-gray-700"><strong>High Starting Torque:</strong> Immediate power to crush debris upon startup.</p>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- Reliability Image -->
+                            <div class="w-full md:w-1/3 flex justify-center items-center bg-gray-50 p-4 border border-gray-200">
+                                <img src="https://im01.itaiwantrade.com/fe530da9-e9cd-41d3-90e1-7a5bf2912a7b/%E5%AE%8F%E6%B3%B51-2-2.jpg"
+                                     alt="GCB Pump Close-up"
+                                     class="w-full h-auto object-contain"
+                                     onerror="this.onerror=null;this.src='https://placehold.co/250x250/cccccc/333333?text=Image+Load+Failed';"
+                                />
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Content: Motor -->
+                    <div id="content-motor" class="feature-content hidden w-full">
+                        <div class="flex flex-col md:flex-row gap-8 items-center">
+                            <div class="flex-1">
+                                <h3 class="text-2xl font-bold text-black mb-4 border-b-2 border-yellow-400 pb-2 inline-block">Advanced BLDC Technology</h3>
+                                <ul class="space-y-4">
+                                    <li class="flex gap-3">
+                                        <span class="text-green-600 font-bold">✓</span>
+                                        <p class="text-gray-700"><strong>Energy Efficiency:</strong> Brushless DC technology significantly reduces power consumption compared to traditional AC pumps.</p>
+                                    </li>
+                                    <li class="flex gap-3">
+                                        <span class="text-green-600 font-bold">✓</span>
+                                        <p class="text-gray-700"><strong>Silent Operation:</strong> Engineered for noise-sensitive environments like residential areas and quiet commercial zones.</p>
+                                    </li>
+                                    <li class="flex gap-3">
+                                        <span class="text-green-600 font-bold">✓</span>
+                                        <p class="text-gray-700"><strong>Lower OpEx:</strong> Reduced energy draw translates to lower long-term operating costs.</p>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="w-full md:w-1/3 flex justify-center items-center bg-gray-50 p-6 border border-gray-200">
+                                <div class="text-center">
+                                    <div class="text-6xl mb-2">🔇</div>
+                                    <div class="text-sm font-bold text-gray-400 uppercase tracking-widest">NOISE LEVEL</div>
+                                    <div class="text-2xl font-black text-green-600">ULTRA LOW</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Content: Smart -->
+                    <div id="content-smart" class="feature-content hidden w-full">
+                        <div class="flex flex-col md:flex-row gap-8 items-center">
+                            <div class="flex-1">
+                                <h3 class="text-2xl font-bold text-black mb-4 border-b-2 border-yellow-400 pb-2 inline-block">Smart Self-Cleaning</h3>
+                                <ul class="space-y-4">
+                                    <li class="flex gap-3">
+                                        <span class="text-green-600 font-bold">✓</span>
+                                        <p class="text-gray-700"><strong>Reverse Jog Function:</strong> The pump intelligently detects jams and briefly reverses the cutter direction to clear blockages automatically.</p>
+                                    </li>
+                                    <li class="flex gap-3">
+                                        <span class="text-green-600 font-bold">✓</span>
+                                        <p class="text-gray-700"><strong>Soft Start:</strong> Gradually ramps up power to reduce mechanical stress and prevent electrical spikes, extending component life.</p>
+                                    </li>
+                                    <li class="flex gap-3">
+                                        <span class="text-green-600 font-bold">✓</span>
+                                        <p class="text-gray-700"><strong>Double Mechanical Seals:</strong> Robust protection against water ingress for long operational lifespan.</p>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="w-full md:w-1/3 flex justify-center items-center bg-gray-50 p-6 border border-gray-200">
+                                <div class="text-center">
+                                    <div class="text-6xl mb-2">🔄</div>
+                                    <div class="text-sm font-bold text-gray-400 uppercase tracking-widest">AUTO-REVERSE</div>
+                                    <div class="text-2xl font-black text-green-600">ANTI-JAM</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Performance Section -->
+    <section id="performance" class="py-16 px-4 bg-white border-t border-gray-200">
+        <div class="container mx-auto max-w-6xl">
+            <div class="text-center max-w-3xl mx-auto mb-10">
+                <h2 class="text-3xl font-black text-black mb-4 uppercase">Performance & <span class="text-green-600">Sizing Assistant</span></h2>
+                <p class="text-gray-600">
+                    Analyze the hydraulic performance of the GCB Series. Use the chart to determine the flow rate (L/min) at your required total dynamic head (Meters).
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Sizing Assistant Controls -->
+                <div class="lg:col-span-1 bg-black p-6 shadow-lg h-fit border-t-4 border-yellow-500 text-white">
+                    <h3 class="font-bold text-lg mb-4 text-yellow-400 uppercase tracking-wide">1. Calculate Suitability</h3>
+                    <p class="text-sm text-gray-300 mb-4">Enter your minimum required flow (Q) and head (H) to check model suitability and generate an analysis.</p>
+
+                    <div class="space-y-4">
+                        <div>
+                            <label for="requiredFlow" class="block text-xs font-bold text-gray-400 mb-1 uppercase">Required Flow (Q in L/min)</label>
+                            <input type="number" id="requiredFlow" min="1" max="195" value="100" class="w-full p-2 bg-gray-800 border border-gray-600 text-white rounded focus:ring-yellow-500 focus:border-yellow-500">
+                        </div>
+                        <div>
+                            <label for="requiredHead" class="block text-xs font-bold text-gray-400 mb-1 uppercase">Required Head (H in Meters)</label>
+                            <input type="number" id="requiredHead" min="1" max="17" value="10" class="w-full p-2 bg-gray-800 border border-gray-600 text-white rounded focus:ring-yellow-500 focus:border-yellow-500">
+                        </div>
+                        <button onclick="handleSizingCheck()" class="w-full flex items-center justify-center gap-2 bg-green-600 text-white px-4 py-3 font-bold hover:bg-green-500 transition shadow-md uppercase">
+                            <span id="sizingBtnText">Analyze Suitability</span>
+                            <div id="sizingLoader" class="loading-spinner hidden"></div>
+                        </button>
+                    </div>
+
+                    <div class="mt-8 p-4 bg-gray-800 border-l-4 border-yellow-500">
+                        <h4 class="text-xs font-bold text-yellow-500 mb-1 uppercase">💡 Engineering Note</h4>
+                        <p class="text-xs text-gray-400 leading-relaxed">
+                            The calculated point should always fall *below* the pump curve for reliable operation.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Chart -->
+                <div class="lg:col-span-2 bg-white p-6 border border-gray-200 shadow-sm flex flex-col items-center justify-center">
+                    <div class="w-full flex justify-between items-center mb-4">
+                        <h3 class="font-bold text-black">Head (m) vs. Flow (L/min) Curve</h3>
+                        <span class="text-xs text-gray-500 bg-gray-100 px-2 py-1 uppercase tracking-wide">Interactive</span>
+                    </div>
+                    
+                    <div class="chart-container">
+                        <canvas id="performanceChart"></canvas>
+                    </div>
+                    
+                    <div class="w-full mt-6">
+                        <h3 class="font-bold text-black mb-2 flex items-center gap-2">
+                            2. AI Suitability Analysis <span class="text-xs bg-yellow-400 text-black px-2 py-0.5 rounded-full">Gemini</span>
+                        </h3>
+                        <div id="sizingAnalysisOutput" class="p-4 bg-gray-50 border border-gray-200 text-sm text-gray-700 min-h-[100px] border-l-4 border-black">
+                            Enter your requirements and click "Analyze Suitability" to get an AI-powered engineering recommendation.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW: Eco-Savings ROI Generator (Gemini Powered) -->
+    <section id="savings" class="py-16 px-4 bg-green-50 border-t border-gray-200">
+        <div class="container mx-auto max-w-4xl">
+            <div class="mb-10 text-center">
+                <span class="inline-block bg-green-100 text-green-800 px-3 py-1 font-bold text-xs uppercase mb-3 rounded-full">Gemini AI Powered</span>
+                <h2 class="text-3xl font-black text-black mb-4 uppercase">Eco-Savings ROI Generator</h2>
+                <p class="text-gray-600">
+                    Switching to BLDC technology reduces energy consumption significantly. Enter your current usage details, and our AI will generate a customized sustainability & cost reduction report.
+                </p>
+            </div>
+
+            <div class="bg-white p-8 rounded shadow-lg border-t-8 border-green-600">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+                    <div>
+                        <label class="block text-xs font-bold text-gray-500 mb-1 uppercase">Current Pump Power (kW)</label>
+                        <input type="number" id="roiPower" value="1.5" class="w-full p-3 bg-gray-50 border border-gray-300 rounded focus:ring-green-500 focus:border-green-500">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-gray-500 mb-1 uppercase">Daily Run Time (Hours)</label>
+                        <input type="number" id="roiHours" value="8" class="w-full p-3 bg-gray-50 border border-gray-300 rounded focus:ring-green-500 focus:border-green-500">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-gray-500 mb-1 uppercase">Electricity Cost ($/kWh)</label>
+                        <input type="number" id="roiCost" value="0.15" class="w-full p-3 bg-gray-50 border border-gray-300 rounded focus:ring-green-500 focus:border-green-500">
+                    </div>
+                </div>
+                
+                <button onclick="generateROIReport()" class="w-full bg-black text-white px-6 py-4 font-bold hover:bg-gray-800 transition shadow-md uppercase flex items-center justify-center gap-2">
+                    <span id="roiBtnText">Generate ROI Report</span>
+                    <span class="text-green-500 text-xl">🌱</span>
+                    <div id="roiLoader" class="loading-spinner hidden"></div>
+                </button>
+
+                <div id="roiOutput" class="mt-6 p-6 bg-gray-50 border border-gray-200 rounded min-h-[150px] text-sm text-gray-700 whitespace-pre-wrap font-mono border-l-4 border-green-500 hidden">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Specs -->
+    <section id="specs" class="py-16 px-4 bg-gray-50 border-t border-gray-200">
+        <div class="container mx-auto max-w-5xl">
+            <div class="mb-12 text-center">
+                <h2 class="text-3xl font-black text-black mb-4 uppercase">Technical Specifications</h2>
+                <p class="text-gray-600">Compare the GCB-07 and GCB-10 models side-by-side to find the right fit for your installation.</p>
+            </div>
+
+            <div class="overflow-x-auto shadow-md border border-gray-200 bg-white">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="bg-black text-white text-sm uppercase tracking-wider">
+                            <th class="p-4 font-bold border-r border-gray-700">Specification</th>
+                            <th class="p-4 font-bold text-yellow-400 border-r border-gray-700">GCB-07</th>
+                            <th class="p-4 font-bold text-green-400">GCB-10</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-gray-800 text-sm divide-y divide-gray-200">
+                        <tr class="hover:bg-gray-50 transition">
+                            <td class="p-4 font-bold text-black bg-gray-100 border-r border-gray-200">Output Power</td>
+                            <td class="p-4 border-r border-gray-200">3/4 HP (550 W)</td>
+                            <td class="p-4 font-bold text-green-700">1 HP (750 W)</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 transition">
+                            <td class="p-4 font-bold text-black bg-gray-100 border-r border-gray-200">Outlet Size</td>
+                            <td class="p-4 border-r border-gray-200">32 mm (1.25")</td>
+                            <td class="p-4">32 mm (1.25")</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 transition">
+                            <td class="p-4 font-bold text-black bg-gray-100 border-r border-gray-200">Max Flow (Qmax)</td>
+                            <td class="p-4 border-r border-gray-200">125 L/min</td>
+                            <td class="p-4 font-bold text-green-700">195 L/min</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 transition">
+                            <td class="p-4 font-bold text-black bg-gray-100 border-r border-gray-200">Max Head (Hmax)</td>
+                            <td class="p-4 border-r border-gray-200">13 m</td>
+                            <td class="p-4 font-bold text-green-700">17 m</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 transition">
+                            <td class="p-4 font-bold text-black bg-gray-100 border-r border-gray-200">Weight</td>
+                            <td class="p-4 border-r border-gray-200">12 kg</td>
+                            <td class="p-4">13 kg</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 transition">
+                            <td class="p-4 font-bold text-black bg-gray-100 border-r border-gray-200">Construction</td>
+                            <td colspan="2" class="p-4 text-center italic text-gray-500 bg-gray-50">Compact, Lightweight, Double Mechanical Seals</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="mt-8 flex flex-wrap gap-4 justify-center">
+                <span class="px-4 py-2 bg-black text-white rounded-none text-xs font-bold border-l-4 border-green-500">ISO CERTIFIED</span>
+                <span class="px-4 py-2 bg-black text-white rounded-none text-xs font-bold border-l-4 border-green-500">CE MARKED</span>
+                <span class="px-4 py-2 bg-black text-white rounded-none text-xs font-bold border-l-4 border-green-500">UKCA COMPLIANT</span>
+                <span class="px-4 py-2 bg-black text-white rounded-none text-xs font-bold border-l-4 border-green-500">CSA APPROVED</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW: Smart Site Doctor (Troubleshooting) -->
+    <section id="support" class="py-16 px-4 bg-yellow-50 border-t border-gray-200">
+        <div class="container mx-auto max-w-4xl">
+            <div class="mb-10 text-center">
+                <span class="inline-block bg-yellow-200 text-yellow-900 px-3 py-1 font-bold text-xs uppercase mb-3 rounded-full">Gemini AI Powered</span>
+                <h2 class="text-3xl font-black text-black mb-4 uppercase">Smart Site Doctor</h2>
+                <p class="text-gray-600">
+                    Having trouble on-site? Describe the symptoms (e.g., "red light blinking", "unusual vibration"). Our AI Engineering Assistant will provide instant diagnostic steps based on GCB technical protocols.
+                </p>
+            </div>
+
+            <div class="bg-white p-8 rounded shadow-lg border-t-8 border-yellow-500">
+                <div class="mb-4">
+                    <label class="block text-xs font-bold text-gray-500 mb-2 uppercase">Describe the Issue</label>
+                    <textarea id="issueInput" rows="3" class="w-full p-4 bg-gray-50 border border-gray-300 rounded focus:ring-yellow-500 focus:border-yellow-500" placeholder="E.g., The pump starts but stops after 10 seconds..."></textarea>
+                </div>
+                
+                <button onclick="diagnoseIssue()" class="w-full bg-black text-white px-6 py-4 font-bold hover:bg-gray-800 transition shadow-md uppercase flex items-center justify-center gap-2">
+                    <span id="diagnoseBtnText">Diagnose Problem</span>
+                    <span class="text-yellow-500 text-xl">🔧</span>
+                    <div id="diagnoseLoader" class="loading-spinner hidden"></div>
+                </button>
+
+                <div id="diagnoseOutput" class="mt-6 p-6 bg-gray-50 border border-gray-200 rounded min-h-[150px] text-sm text-gray-700 whitespace-pre-wrap font-mono border-l-4 border-yellow-500 hidden">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer / RFQ Draft Assistant -->
+    <footer id="contact" class="bg-black text-white py-12 px-4 border-t-8 border-yellow-500">
+        <div class="container mx-auto max-w-6xl">
+            <h2 class="text-2xl font-black text-white mb-6 text-center uppercase tracking-widest">Contact & <span class="text-green-500">RFQ Assistant</span></h2>
+            
+            <!-- Detailed Contact Information -->
+            <div class="bg-gray-900 p-6 mb-8 border border-gray-800 max-w-lg mx-auto text-sm text-center shadow-lg">
+                <p class="font-bold text-yellow-500 mb-2 uppercase tracking-wide">HUNG PUMP INDUSTRIAL CO., LTD. / Contact: Monica Wei</p>
+                <p class="text-gray-300">
+                    <span class="font-bold text-white">Address:</span> No.16, Lianming St., Bade Dist., Taoyuan City 334034, Taiwan (R.O.C.)
+                </p>
+                <div class="flex justify-center flex-wrap gap-x-4 gap-y-1 mt-2">
+                    <p>T <a href="tel:+88633713969" class="text-green-400 hover:text-green-300 font-mono">+886-3-371-3969</a></p>
+                    <p>F <span class="text-green-400 font-mono">+886-3-371-3996</span></p>
+                </div>
+                <div class="mt-2 space-y-1">
+                    <p>E-mail 1: <a href="mailto:sales01@hungpump.com" class="text-green-400 hover:text-green-300">sales01@hungpump.com</a></p>
+                    <p>E-mail 2: <a href="mailto:monica@pumps.com.tw" class="text-green-400 hover:text-green-300">monica@pumps.com.tw</a></p>
+                </div>
+            </div>
+            
+            <!-- BLDC Core Image Callout -->
+            <div class="mt-8 mb-8 max-w-xl mx-auto p-1 bg-green-900 rounded-lg opacity-90 hover:opacity-100 transition">
+                <div class="p-4 bg-black rounded border border-green-800">
+                    <h3 class="text-lg font-bold text-green-400 mb-3 text-center uppercase">
+                        Request a Quote for the BLDC Advantage
+                    </h3>
+                    <img src="https://www.hungpump.com/images/159436" 
+                         alt="BLDC Motor Core Technology Diagram"
+                         class="w-full h-auto rounded object-contain opacity-80"
+                         onerror="this.onerror=null;this.src='https://placehold.co/400x200/cccccc/333333?text=BLDC+Motor+Image+Load+Failed';"
+                    />
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- RFQ Controls -->
+                <div class="bg-gray-900 p-6 shadow-lg border-l-4 border-yellow-500">
+                    <h3 class="text-xl font-bold mb-4 text-white uppercase">Generate RFQ Email</h3>
+                    <p class="text-sm text-gray-400 mb-6">Instantly draft a professional email to request a quote and lead time, highlighting key product advantages.</p>
+                    
+                    <div class="space-y-4">
+                        <div>
+                            <label for="rfqModel" class="block text-xs font-bold text-gray-500 mb-1 uppercase">Select Model</label>
+                            <select id="rfqModel" class="w-full p-2 bg-black border border-gray-700 rounded text-white focus:ring-green-500 focus:border-green-500">
+                                <option value="GCB-07">GCB-07 (3/4 HP)</option>
+                                <option value="GCB-10">GCB-10 (1 HP)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="rfqQuantity" class="block text-xs font-bold text-gray-500 mb-1 uppercase">Quantity Needed</label>
+                            <input type="number" id="rfqQuantity" min="1" value="10" class="w-full p-2 bg-black border border-gray-700 rounded text-white focus:ring-green-500 focus:border-green-500">
+                        </div>
+                        <button onclick="generateRFQDraft()" class="w-full flex items-center justify-center gap-2 bg-yellow-500 text-black px-4 py-3 font-bold hover:bg-yellow-400 transition shadow-md uppercase">
+                            <span id="rfqBtnText">Draft RFQ Email</span>
+                            <div id="rfqLoader" class="loading-spinner hidden"></div>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- RFQ Output -->
+                <div class="bg-gray-900 p-6 shadow-lg border-l-4 border-green-500">
+                    <h3 class="text-xl font-bold mb-4 text-white uppercase">Email Draft Preview</h3>
+                    <div id="rfqOutput" class="p-4 bg-black border border-gray-800 text-sm text-gray-300 whitespace-pre-wrap min-h-[200px] font-mono">
+                        Click "Draft RFQ Email" to generate a professional inquiry using AI.
+                    </div>
+                    <button id="copyRfqBtn" onclick="copyToClipboard('rfqOutput')" class="mt-4 w-full bg-green-700 text-white px-4 py-2 font-bold hover:bg-green-600 transition hidden uppercase text-sm">Copy to Clipboard</button>
+                </div>
+            </div>
+
+            <div class="mt-12 text-xs text-gray-600 text-center uppercase tracking-widest">
+                &copy; 2024 Hung Pump Industrial Co., Ltd. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // API Configuration (Leave apiKey blank)
+        const API_KEY = "";
+        const API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=" + API_KEY;
+
+        // --- Utility Functions ---
+
+        function showLoading(loaderId, buttonTextId, loadingText) {
+            document.getElementById(loaderId).classList.remove('hidden');
+            document.getElementById(buttonTextId).textContent = loadingText;
+            document.getElementById(buttonTextId).parentElement.disabled = true;
+        }
+
+        function hideLoading(loaderId, buttonTextId, originalText) {
+            document.getElementById(loaderId).classList.add('hidden');
+            document.getElementById(buttonTextId).textContent = originalText;
+            document.getElementById(buttonTextId).parentElement.disabled = false;
+        }
+        
+        function copyToClipboard(elementId) {
+            const textToCopy = document.getElementById(elementId).innerText;
+            try {
+                navigator.clipboard.writeText(textToCopy);
+                document.getElementById('copyRfqBtn').textContent = 'COPIED!';
+                setTimeout(() => document.getElementById('copyRfqBtn').textContent = 'COPY TO CLIPBOARD', 2000);
+            } catch (err) {
+                document.getElementById('copyRfqBtn').textContent = 'COPY FAILED';
+            }
+        }
+
+        // --- 1. Tab Interaction Logic ---
+        function switchTab(tabId) {
+            document.querySelectorAll('.feature-content').forEach(el => el.classList.add('hidden'));
+            
+            document.querySelectorAll('.feature-tab').forEach(el => {
+                el.classList.remove('bg-white', 'shadow-md', 'border-yellow-500', 'active-tab');
+                el.classList.add('bg-gray-200', 'border-transparent');
+                el.querySelector('span.text-green-600')?.classList.add('opacity-0');
+                el.querySelector('span.text-black')?.classList.add('opacity-0');
+            });
+
+            const content = document.getElementById(`content-${tabId}`);
+            if (content) {
+                content.classList.remove('hidden');
+                content.style.opacity = '0';
+                setTimeout(() => content.style.opacity = '1', 50);
+                content.style.transition = 'opacity 0.3s ease';
+            }
+
+            const tab = document.getElementById(`tab-${tabId}`);
+            if (tab) {
+                tab.classList.remove('bg-gray-200', 'border-transparent');
+                tab.classList.add('bg-white', 'shadow-md', 'border-yellow-500', 'active-tab');
+                tab.querySelector('span.text-green-600')?.classList.remove('opacity-0');
+            }
+        }
+
+        // Initialize default tab
+        document.addEventListener('DOMContentLoaded', () => {
+            switchTab('reliability');
+            initChart();
+        });
+
+
+        // --- 2. Chart.js Implementation & Sizing Logic ---
+        let performanceChart;
+        let sizingPointId = 'sizingPoint';
+        let sizingPointData = { x: 10, y: 100 };
+
+        const modelData = {
+            'GCB-07': [ {x: 0, y: 125}, {x: 3, y: 121}, {x: 6, y: 118}, {x: 9, y: 105}, {x: 12, y: 75}, {x: 13, y: 0} ],
+            'GCB-10': [ {x: 0, y: 195}, {x: 3, y: 188}, {x: 6, y: 178}, {x: 9, y: 165}, {x: 12, y: 139}, {x: 15, y: 100}, {x: 17, y: 0} ]
+        };
+
+        function initChart() {
+            const ctx = document.getElementById('performanceChart').getContext('2d');
+            
+            performanceChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    datasets: [
+                        {
+                            label: 'GCB-07 (3/4 HP)',
+                            data: modelData['GCB-07'],
+                            borderColor: '#eab308', /* yellow-500 */
+                            backgroundColor: 'rgba(234, 179, 8, 0.1)',
+                            borderWidth: 3,
+                            pointBackgroundColor: '#000',
+                            pointBorderColor: '#eab308',
+                            pointRadius: 5,
+                            pointHoverRadius: 7,
+                            tension: 0.4, 
+                            fill: true
+                        },
+                        {
+                            label: 'GCB-10 (1 HP)',
+                            data: modelData['GCB-10'],
+                            borderColor: '#16a34a', /* green-600 */
+                            backgroundColor: 'rgba(22, 163, 74, 0.1)',
+                            borderWidth: 3,
+                            pointBackgroundColor: '#000',
+                            pointBorderColor: '#16a34a',
+                            pointRadius: 5,
+                            pointHoverRadius: 7,
+                            tension: 0.4, 
+                            fill: true
+                        },
+                         {
+                            label: 'Required Sizing Point',
+                            data: [sizingPointData],
+                            backgroundColor: '#000', 
+                            borderColor: '#000', 
+                            borderWidth: 4,
+                            pointStyle: 'crossRot', 
+                            pointRadius: 10,
+                            pointHoverRadius: 12,
+                            showLine: false,
+                            tension: 0,
+                            hidden: false 
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    interaction: {
+                        mode: 'index',
+                        intersect: false,
+                    },
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                            align: 'end',
+                            labels: {
+                                usePointStyle: true,
+                                boxWidth: 10,
+                                color: '#000'
+                            }
+                        },
+                        tooltip: {
+                            backgroundColor: 'rgba(0, 0, 0, 0.9)', 
+                            padding: 12,
+                            titleFont: { size: 14 },
+                            bodyFont: { size: 13 },
+                            callbacks: {
+                                title: (tooltipItems) => {
+                                    return `Head: ${tooltipItems[0].parsed.x} meters`;
+                                },
+                                label: (context) => {
+                                    if (context.datasetIndex === 2) {
+                                        return `Required: ${context.parsed.y} L/min @ ${context.parsed.x} m`;
+                                    }
+                                    return `${context.dataset.label}: ${context.parsed.y} L/min`;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            type: 'linear',
+                            title: {
+                                display: true,
+                                text: 'Total Head (Meters)',
+                                font: { weight: 'bold', color: '#000' }
+                            },
+                            min: 0,
+                            max: 20,
+                            grid: {
+                                color: '#e5e7eb'
+                            },
+                            ticks: { color: '#000' }
+                        },
+                        y: {
+                            title: {
+                                display: true,
+                                text: 'Flow Rate (L/min)',
+                                font: { weight: 'bold', color: '#000' }
+                            },
+                            min: 0,
+                            max: 220,
+                            grid: {
+                                color: '#e5e7eb'
+                            },
+                            ticks: { color: '#000' }
+                        }
+                    }
+                }
+            });
+        }
+
+        function isBelowCurve(x, y, model) {
+            const data = modelData[model];
+            if (x < data[0].x || x > data[data.length - 1].x) {
+                return false; 
+            }
+            for (let i = 0; i < data.length - 1; i++) {
+                const p1 = data[i];
+                const p2 = data[i + 1];
+                if (x >= p1.x && x <= p2.x) {
+                    const pumpFlow = p1.y + (p2.y - p1.y) * ((x - p1.x) / (p2.x - p1.x));
+                    return y <= pumpFlow;
+                }
+            }
+            return false;
+        }
+
+        function handleSizingCheck() {
+            const flow = parseFloat(document.getElementById('requiredFlow').value);
+            const head = parseFloat(document.getElementById('requiredHead').value);
+            const outputEl = document.getElementById('sizingAnalysisOutput');
+
+            if (isNaN(flow) || isNaN(head) || flow <= 0 || head <= 0) {
+                outputEl.innerHTML = '<span class="text-red-600 font-bold">ERROR: Please enter valid Flow (L/min) and Head (Meters).</span>';
+                return;
+            }
+
+            sizingPointData.x = head;
+            sizingPointData.y = flow;
+            performanceChart.data.datasets[2].data = [sizingPointData];
+            performanceChart.update();
+
+            const is07Suitable = isBelowCurve(head, flow, 'GCB-07');
+            const is10Suitable = isBelowCurve(head, flow, 'GCB-10');
+            
+            let resultModel = 'None';
+            if (is10Suitable) resultModel = 'GCB-10';
+            else if (is07Suitable) resultModel = 'GCB-07';
+            
+            generateSizingAnalysis(resultModel, flow, head);
+        }
+
+        async function generateSizingAnalysis(model, flow, head) {
+            showLoading('sizingLoader', 'sizingBtnText', 'ANALYZING...');
+            const outputEl = document.getElementById('sizingAnalysisOutput');
+
+            let modelText = "";
+            let suitabilityStatus = "unsuitable";
+            if (model === 'GCB-07') {
+                modelText = "The recommended model is GCB-07 (3/4 HP).";
+                suitabilityStatus = "suitable";
+            } else if (model === 'GCB-10') {
+                modelText = "The recommended model is GCB-10 (1 HP).";
+                suitabilityStatus = "suitable";
+            } else {
+                 modelText = "Neither GCB-07 nor GCB-10 meets the requirement. Please check the higher power GCB models.";
+            }
+
+            const systemPrompt = "You are a professional hydraulic pump engineer. A user has provided their required flow (Q in L/min) and head (H in meters) for a sewage grinder pump application, and we have determined the best-fitting GCB series model. Your task is to provide a concise, technical explanation (max 3 paragraphs) detailing why this model is " + suitabilityStatus + " (or why both are unsuitable), emphasizing its BLDC motor, anti-clog features (SUS440C cutter, Reverse Jog), and noting any installation considerations based on the given head of " + head + " meters. Provide the output in English.";
+            
+            const userQuery = `Required Flow (Q): ${flow} L/min. Required Head (H): ${head} meters. Suitability Result: ${modelText}`;
+            
+            try {
+                const payload = {
+                    contents: [{ parts: [{ text: userQuery }] }],
+                    systemInstruction: { parts: [{ text: systemPrompt }] },
+                };
+                const response = await fetchWithRetry(API_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                const result = await response.json();
+                const text = result.candidates?.[0]?.content?.parts?.[0]?.text || 'Analysis Failed: Could not get response from AI.';
+                outputEl.innerText = text;
+            } catch (error) {
+                outputEl.innerText = 'Analysis Failed: API connection error or timeout. Please try again later.';
+            } finally {
+                hideLoading('sizingLoader', 'sizingBtnText', 'Analyze Suitability');
+            }
+        }
+
+        // --- NEW: ROI Logic ---
+        async function generateROIReport() {
+            showLoading('roiLoader', 'roiBtnText', 'GENERATING REPORT...');
+            const outputEl = document.getElementById('roiOutput');
+            outputEl.classList.remove('hidden');
+            
+            const power = document.getElementById('roiPower').value;
+            const hours = document.getElementById('roiHours').value;
+            const cost = document.getElementById('roiCost').value;
+
+            const systemPrompt = "You are an energy efficiency consultant for industrial pumps. Calculate the theoretical savings of switching from a standard AC pump to a High-Efficiency BLDC GCB Pump (assume ~30% efficiency gain). Generate a persuasive 'Sustainability & Cost Reduction Report' (max 4 paragraphs) in English. Include estimated monthly savings and explain the environmental benefits of BLDC technology (lower carbon footprint). Use bullet points for key figures.";
+            
+            const userQuery = `Current Pump: ${power} kW, Daily Run Time: ${hours} hours, Electricity Cost: $${cost}/kWh.`;
+
+            try {
+                const payload = {
+                    contents: [{ parts: [{ text: userQuery }] }],
+                    systemInstruction: { parts: [{ text: systemPrompt }] },
+                };
+                const response = await fetchWithRetry(API_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                const result = await response.json();
+                outputEl.innerText = result.candidates?.[0]?.content?.parts?.[0]?.text || 'Report Failed.';
+            } catch (error) {
+                outputEl.innerText = 'Report Failed: API connection error.';
+            } finally {
+                hideLoading('roiLoader', 'roiBtnText', 'Generate ROI Report');
+            }
+        }
+
+        // --- NEW: Troubleshooting Logic ---
+        async function diagnoseIssue() {
+            showLoading('diagnoseLoader', 'diagnoseBtnText', 'DIAGNOSING...');
+            const outputEl = document.getElementById('diagnoseOutput');
+            outputEl.classList.remove('hidden');
+            
+            const issue = document.getElementById('issueInput').value;
+
+            const systemPrompt = "You are a senior pump field technician for Hung Pump GCB Series. Based on the user's described symptom, diagnose the likely issue using your knowledge of GCB pumps (Reverse Jog anti-jamming, Soft Start, Overload protection, LED indicators). Provide a step-by-step troubleshooting guide in English. Be concise, safety-first, and technical.";
+            
+            const userQuery = `Symptom: ${issue}`;
+
+            try {
+                const payload = {
+                    contents: [{ parts: [{ text: userQuery }] }],
+                    systemInstruction: { parts: [{ text: systemPrompt }] },
+                };
+                const response = await fetchWithRetry(API_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                const result = await response.json();
+                outputEl.innerText = result.candidates?.[0]?.content?.parts?.[0]?.text || 'Diagnosis Failed.';
+            } catch (error) {
+                outputEl.innerText = 'Diagnosis Failed: API connection error.';
+            } finally {
+                hideLoading('diagnoseLoader', 'diagnoseBtnText', 'Diagnose Problem');
+            }
+        }
+
+        async function generateRFQDraft() {
+            showLoading('rfqLoader', 'rfqBtnText', 'DRAFTING...');
+            const outputEl = document.getElementById('rfqOutput');
+            const model = document.getElementById('rfqModel').value;
+            const quantity = document.getElementById('rfqQuantity').value;
+
+            const systemPrompt = "You are a professional procurement assistant drafting an email to a supplier (HUNG PUMP INDUSTRIAL CO., LTD.). The user needs a quotation for a specific model and quantity. Draft a concise, formal email requesting a quotation and lead time. Include ISO/CE/UKCA/CSA certs requirement. Provide output in English.";
+            
+            const userQuery = `Draft RFQ for ${model}, Qty: ${quantity}.`;
+            
+            try {
+                const payload = {
+                    contents: [{ parts: [{ text: userQuery }] }],
+                    systemInstruction: { parts: [{ text: systemPrompt }] },
+                };
+                const response = await fetchWithRetry(API_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                const result = await response.json();
+                outputEl.innerText = result.candidates?.[0]?.content?.parts?.[0]?.text || 'Draft Failed.';
+            } catch (error) {
+                outputEl.innerText = 'Draft Failed: API connection error.';
+            } finally {
+                hideLoading('rfqLoader', 'rfqBtnText', 'Draft RFQ Email');
+            }
+        }
+
+        async function fetchWithRetry(url, options, maxRetries = 5) {
+            for (let i = 0; i < maxRetries; i++) {
+                try {
+                    const response = await fetch(url, options);
+                    if (response.status !== 429) {
+                        return response;
+                    }
+                    console.log(`Rate limit exceeded, retrying in ${2 ** i} seconds...`);
+                } catch (error) {
+                    console.error('Fetch attempt failed:', error);
+                }
+                await new Promise(resolve => setTimeout(resolve, 2 ** i * 1000));
+            }
+            throw new Error('API request failed after multiple retries.');
+        }
+
+    </script>
+</body>
+</html>
